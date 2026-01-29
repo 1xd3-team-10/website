@@ -65,6 +65,8 @@ links {
     display: flex;
     flex-direction: row;
     gap: var(--space-4);
+    font-size: var(--text-lg);
+    align-items: center;
 }
 
 header {

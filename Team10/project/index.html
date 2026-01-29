@@ -6,43 +6,27 @@
         <link rel="stylesheet" href="/Team10/style.css" />
         <title>Project Report</title>
     </head>
-    <body>
-        <script
-            src="https://cs1xd3.cas.mcmaster.ca/~joell/prod.js"
-            defer
-        ></script>
-        <header>
-            Team 10
-            <links>
-                <a class="links" href="/Team10/">Home</a>
-                <a class="links" href="/Team10/about/">About Us</a>
-                <a class="links" href="/Team10/project/">The Project</a>
-                <a class="links" href="/Team10/showcase/">Showcase</a>
-                <a class="links" href="/Team10/contact">Contact Us</a>
-            </link>
-        </header>
-
+    <body id="root">
+        <div comp="nav"></div>
         <cardContainer>
-            <card>
-                <h2>Project name</h2>
-                <subtext>Appointment Scheduler</subtext>
-            </card>
-
-            <card>
-                <h2>Client</h2>
-                <subtext
-                    >Name & affiliation: Jimmy Brown — A Real Company
-                    Inc</subtext
-                >
-            </card>
-
-            <card>
-                <h2>Initial client report</h2>
-                <h3>Target users</h3>
-                <subtext>
-                    Management staff will use the app to manage their
-                    appointments with outside contacts and other employees
-                </subtext>
+            <div
+                comp="card"
+                [title]="Project name"
+                [text]="Appointment Scheduler"
+            ></div>
+            <div
+                comp="card"
+                [title]="Client"
+                [text]="Name & affiliation: Jimmy Brown — A Real Company
+            Inc"
+            ></div>
+            <div
+                comp="card"
+                [title]="Initial client report"
+                [subtitle]="Target users"
+                [text]="                    Management staff will use the app to manage their
+            appointments with outside contacts and other employees"
+            >
                 <h3>Static information</h3>
                 <ul>
                     <li>Company Name: A Real Company Inc</li>
@@ -81,29 +65,37 @@
                     </li>
                     <li>Calendar view for viewing events</li>
                 </ul>
-            </card>
+            </div>
 
-            <card>
-                <h2>Contact & access</h2>
-                <subtext>
-                    Client contact: jbrown@arealcompany.com<br />
-                    Site URL:
-                    <a
-                        target="_blank"
-                        href="https://cs1xd3.cas.mcmaster.ca/~sita1/Team10/project/"
-                        >https://cs1xd3.cas.mcmaster.ca/~sita1/Team10/project/</a
-                    ><br />
-                </subtext>
-            </card>
+            <div
+                comp="card"
+                [title]="Contact & access"
+                [text]="
+                Client contact: jbrown@arealcompany.com<br />
+                Site URL:
+                <a
+                    target='_blank'
+                    href='https://cs1xd3.cas.mcmaster.ca/~sita1/Team10/project/'
+                    >https://cs1xd3.cas.mcmaster.ca/~sita1/Team10/project/</a
+                ><br />"
+            ></div>
 
-            <card>
-                <h2>5. Team & roles</h2>
-                <subtext>
-                    [Lucas Joel — Developer/Project Lead]<br />[Aaron Sit —
-                    Developer/Site Owner]<br />[Jim Liao — Developer]<br />[Harshith
-                    Chiduruppa — Developer]<br />[Jack Yuan - Developer]
-                </subtext>
-            </card>
+            <div
+                comp="card"
+                [title]="Team & roles"
+                [text]="[Lucas Joel — Developer/Project Lead]<br />[Aaron Sit —
+                Developer/Site Owner]<br />[Jim Liao — Developer]<br />[Harshith
+                Chiduruppa — Developer]<br />[Jack Yuan - Developer]"
+            ></div>
         </cardContainer>
     </body>
+    <script src="https://cs1xd3.cas.mcmaster.ca/~joell/prod.js" defer></script>
+    <script>
+        const basePath =
+            location.hostname === "127.0.0.1" ? "/Team10" : "/~sita1/Team10";
+
+        const script = document.createElement("script");
+        script.src = `${basePath}/framework.js`;
+        document.head.appendChild(script);
+    </script>
 </html>

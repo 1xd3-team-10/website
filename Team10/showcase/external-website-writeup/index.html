@@ -6,46 +6,42 @@
         <link rel="stylesheet" href="/Team10/style.css" />
         <title>McMaster Carr Writeup</title>
     </head>
-    <body>
-        <script
-            src="https://cs1xd3.cas.mcmaster.ca/~joell/prod.js"
-            defer
-        ></script>
-        <header>
-            Team 10
-            <links>
-                <a class="links" href="/Team10/">Home</a>
-                <a class="links" href="/Team10/about/">About Us</a>
-                <a class="links" href="/Team10/project/">The Project</a>
-                <a class="links" href="/Team10/showcase/">Showcase</a>
-                <a class="links" href="/Team10/contact">Contact Us</a>
-            </links>
-        </header>
+    <body id="root">
+        <div comp="nav"></div>
         <cardContainer>
-            <card>
-                <h2>McMaster Carr Writeup</h2>
-                <subtext
-                    >We noticed that the McMaster Carr website was very
-                    difficult to navigate and find the parts you need. It also
-                    had an error where if you have an empty cart and click
-                    order, it loads until a timeout then sends you to home page.
-                    The main issue is the ease of ordering on the website as we
-                    have multiple reports of ordering from McMaster-Carr's
-                    website being a hassle.</subtext
-                >
+            <div
+                comp="card"
+                [title]="McMaster Carr Writeup"
+                [text]="We noticed that the McMaster Carr website was very
+            difficult to navigate and find the parts you need. It also
+            had an error where if you have an empty cart and click
+            order, it loads until a timeout then sends you to home page.
+            The main issue is the ease of ordering on the website as we
+            have multiple reports of ordering from McMaster-Carr's
+            website being a hassle."
+            >
                 <a href="https://mcmaster.ca">Website</a>
-            </card>
-            <card>
-                <h2>Vercel Website Writeup</h2>
-                <subtext>
-                    We found that the website vercel.com was very clean and easy
-                    to navigate. A specific example is the navbar showing all
-                    the locations you would need for both information and
-                    purchasing. The website also makes its goal know at the
-                    beginning in the hero section of the website.
-                </subtext>
+            </div>
+            <div
+                comp="card"
+                [title]="Vercel Website Writeup"
+                [text]="We found that the website vercel.com was very clean and easy
+            to navigate. A specific example is the navbar showing all
+            the locations you would need for both information and
+            purchasing. The website also makes its goal know at the
+            beginning in the hero section of the website."
+            >
                 <a href="https://vercel.com">Website</a>
-            </card>
+            </div>
         </cardContainer>
     </body>
+    <script src="https://cs1xd3.cas.mcmaster.ca/~joell/prod.js" defer></script>
+    <script>
+        const basePath =
+            location.hostname === "127.0.0.1" ? "/Team10" : "/~sita1/Team10";
+
+        const script = document.createElement("script");
+        script.src = `${basePath}/framework.js`;
+        document.head.appendChild(script);
+    </script>
 </html>

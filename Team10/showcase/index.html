@@ -6,26 +6,23 @@
         <link rel="stylesheet" href="/Team10/style.css" />
         <title>Showcase</title>
     </head>
-    <body>
-        <script
-            src="https://cs1xd3.cas.mcmaster.ca/~joell/prod.js"
-            defer
-        ></script>
-        <header>
-            Team 10
-            <links>
-                <a class="links" href="/Team10/">Home</a>
-                <a class="links" href="/Team10/about/">About Us</a>
-                <a class="links" href="/Team10/project/">The Project</a>
-                <a class="links" href="/Team10/showcase/">Showcase</a>
-                <a class="links" href="/Team10/contact">Contact Us</a>
-            </link>
-        </header>
+    <body id="root">
+        <div comp="nav"></div>
         <cardContainer>
-            <card>
-                <h2>External Website Writeup</h2>
-                <a href="/Team10/showcase/external-website-writeup">External Website Writeup</a>
-            </card>
+            <div comp="card" [title]="External Website Writeup">
+                <a href="/Team10/showcase/external-website-writeup"
+                    >External Website Writeup</a
+                >
+            </div>
         </cardContainer>
     </body>
+    <script src="https://cs1xd3.cas.mcmaster.ca/~joell/prod.js" defer></script>
+    <script>
+        const basePath =
+            location.hostname === "127.0.0.1" ? "/Team10" : "/~sita1/Team10";
+
+        const script = document.createElement("script");
+        script.src = `${basePath}/framework.js`;
+        document.head.appendChild(script);
+    </script>
 </html>

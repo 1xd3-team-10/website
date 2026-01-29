@@ -3,75 +3,107 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <link rel="stylesheet" href="/Team10/style.css" />
         <title>Project Report</title>
     </head>
     <body>
-        <h1>Project Report</h1>
+        <script
+            src="https://cs1xd3.cas.mcmaster.ca/~joell/prod.js"
+            defer
+        ></script>
+        <header>
+            Team 10
+            <links>
+                <a class="links" href="/Team10/">Home</a>
+                <a class="links" href="/Team10/about/">About Us</a>
+                <a class="links" href="/Team10/project/">The Project</a>
+                <a class="links" href="/Team10/contact">Contact Us</a>
+            </link>
+        </header>
 
-        <h2>1. Project name</h2>
-        <p>Appointment Scheduler</p>
+        <cardContainer>
+            <card>
+                <h2>Project name</h2>
+                <subtext>Appointment Scheduler</subtext>
+                <a href="/home">home</a>
+            </card>
 
-        <h2>2. Client</h2>
-        <p>Name & affiliation: Jimmy Brown — A Real Company Inc</p>
+            <card>
+                <h2>Client</h2>
+                <subtext
+                    >Name & affiliation: Jimmy Brown — A Real Company
+                    Inc</subtext
+                >
+            </card>
 
-        <h2>3. Initial client report</h2>
-        <h3>Target users</h3>
-        <p>
-            Management staff will use the app to manage their appointments with
-            outside contacts and other employees
-        </p>
+            <card>
+                <h2>Initial client report</h2>
+                <h3>Target users</h3>
+                <subtext>
+                    Management staff will use the app to manage their
+                    appointments with outside contacts and other employees
+                </subtext>
+                <h3>Static information</h3>
+                <ul>
+                    <li>Company Name: A Real Company Inc</li>
+                    <li>Address: 123 Business Way</li>
+                    <li>Contact Info: contact@arealcompany.com</li>
+                </ul>
+                <h3>Design & look-and-feel</h3>
+                <ul>
+                    <li>
+                        Client want a default dark mode with light mode option
+                    </li>
+                    <li>
+                        Should have sidebar with known contacts to see quickly
+                        who they have a meeting with
+                    </li>
+                    <li>
+                        Should have a calendar view to be able to see meetings
+                        on days
+                    </li>
+                    <li>Overall look and feel is up to frontend teams</li>
+                </ul>
+                <h3>Data to manage / present</h3>
+                <ul>
+                    <li>Usernames, passwords (hidden)</li>
+                    <li>meetings</li>
+                    <li>contacts</li>
+                </ul>
+                <h3>Interactive elements</h3>
+                <ul>
+                    <li>
+                        Client wants to be able to click and view contact info
+                        for a contact
+                    </li>
+                    <li>
+                        Should be able to CRUD contacts and events with contacts
+                    </li>
+                    <li>Calendar view for viewing events</li>
+                </ul>
+            </card>
 
-        <h3>Static information</h3>
-        <ul>
-            <li>Company Name: A Real Company Inc</li>
-            <li>Address: 123 Business Way</li>
-            <li>Contact Info: contact@arealcompany.com</li>
-        </ul>
+            <card>
+                <h2>Contact & access</h2>
+                <subtext>
+                    Client contact: jbrown@arealcompany.com<br />
+                    Site URL:
+                    <a
+                        target="_blank"
+                        href="https://cs1xd3.cas.mcmaster.ca/~sita1/Team10/project/"
+                        >https://cs1xd3.cas.mcmaster.ca/~sita1/Team10/project/</a
+                    ><br />
+                </subtext>
+            </card>
 
-        <h3>Design & look-and-feel</h3>
-        <ul>
-            <li>Client want a default dark mode with light mode option</li>
-            <li>
-                Should have sidebar with known contacts to see quickly who they
-                have a meeting with
-            </li>
-            <li>
-                Should have a calendar view to be able to see meetings on days
-            </li>
-            <li>Overall look and feel is up to frontend teams</li>
-        </ul>
-
-        <h3>Data to manage / present</h3>
-        <ul>
-            <li>Usernames, passwords (hidden)</li>
-            <li>meetings</li>
-            <li>contacts</li>
-        </ul>
-
-        <h3>Interactive elements</h3>
-        <ul>
-            <li>
-                Client wants to be able to click and view contact info for a
-                contact
-            </li>
-            <li>Should be able to CRUD contacts and events with contacts</li>
-            <li>Calendar view for viewing events</li>
-        </ul>
-
-        <h2>4. Contact & access</h2>
-        <p>
-            Client contact: jbrown@arealcompany.com<br />
-            Site URL:
-            <a href="https://cs1xd3.cas.mcmaster.ca/~sita1/Team10/project/"
-                >https://cs1xd3.cas.mcmaster.ca/~sita1/Team10/project/</a
-            ><br />
-        </p>
-
-        <h2>5. Team & roles</h2>
-        <p>
-            [Lucas Joel — Developer/Project Lead]<br />[Aaron Sit —
-            Developer/Site Owner]<br />[Jim Liao — Developer]<br />[Harshith
-            Chiduruppa — Developer]<br />[Jack Yuan - Developer]
-        </p>
+            <card>
+                <h2>5. Team & roles</h2>
+                <subtext>
+                    [Lucas Joel — Developer/Project Lead]<br />[Aaron Sit —
+                    Developer/Site Owner]<br />[Jim Liao — Developer]<br />[Harshith
+                    Chiduruppa — Developer]<br />[Jack Yuan - Developer]
+                </subtext>
+            </card>
+        </cardContainer>
     </body>
 </html>

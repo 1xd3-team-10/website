@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Appointment Scheduler - Development Plan</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --panel: #111827;
+      --panel-2: #1f2937;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #60a5fa;
+      --border: #374151;
+    }
+
+    body.light {
+      --bg: #f8fafc;
+      --panel: #ffffff;
+      --panel-2: #f1f5f9;
+      --text: #111827;
+      --muted: #4b5563;
+      --accent: #2563eb;
+      --border: #cbd5e1;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      min-height: 100vh;
+    }
+
+    aside {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      padding: 24px;
+      background: var(--panel);
+      border-right: 1px solid var(--border);
+    }
+
+    aside h1 {
+      font-size: 1.35rem;
+      margin-top: 0;
+      margin-bottom: 8px;
+    }
+
+    aside p {
+      color: var(--muted);
+      margin-top: 0;
+    }
+
+    nav a {
+      display: block;
+      color: var(--text);
+      text-decoration: none;
+      padding: 10px 12px;
+      margin: 6px 0;
+      border-radius: 8px;
+      background: transparent;
+    }
+
+    nav a:hover {
+      background: var(--panel-2);
+    }
+
+    .toggle {
+      margin-top: 20px;
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      background: var(--panel-2);
+      color: var(--text);
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    main {
+      padding: 32px;
+      max-width: 1100px;
+    }
+
+    .hero, section {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      margin-top: 0;
+      color: var(--accent);
+    }
+
+    h3 {
+      margin-bottom: 6px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--panel-2);
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    .wireframe {
+      background: #0b1220;
+      color: #d1d5db;
+      padding: 16px;
+      border-radius: 10px;
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      font-family: "Courier New", monospace;
+      font-size: 0.9rem;
+    }
+
+    body.light .wireframe {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+
+    .note {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .quote {
+      border-left: 4px solid var(--accent);
+      padding-left: 14px;
+      margin: 14px 0;
+      color: var(--text);
+    }
+
+    @media (max-width: 900px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      aside {
+        position: static;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside>
+      <h1>Development Plan</h1>
+      <p>Appointment Scheduler</p>
+      <nav>
+        <a href="#names">1. Names</a>
+        <a href="#purpose">2. Purpose</a>
+        <a href="#data">3. Data Description</a>
+        <a href="#functions">4. Functions</a>
+        <a href="#roles">5. Team Roles</a>
+        <a href="#wireframes">6. Wireframes</a>
+        <a href="#increments">7. Increments</a>
+        <a href="#feedback">8. Client Feedback</a>
+      </nav>
+      <button class="toggle" onclick="document.body.classList.toggle('light')">Toggle Light / Dark Mode</button>
+    </aside>
+
+    <main>
+      <section class="hero">
+        <h2>Appointment Scheduler Development Plan</h2>
+        <p><strong>Client:</strong> Jimmy Brown — A Real Company Inc</p>
+        <p><strong>App:</strong> Appointment Scheduler</p>
+        <p><strong>Prepared by:</strong> Team 10 — Lucas Joel, Aaron Sit, Jack Yuan, Harshith Chiduruppa, Jim Liao</p>
+      </section>
+
+      <section id="names">
+        <h2>1. Names</h2>
+        <div class="grid-2">
+          <div class="card">
+            <h3>Team</h3>
+            <p><strong>Team Name:</strong> Team 10</p>
+            <p><strong>Team Members:</strong></p>
+            <ul>
+              <li>Lucas Joel</li>
+              <li>Aaron Sit</li>
+              <li>Jack Yuan</li>
+              <li>Harshith Chiduruppa</li>
+              <li>Jim Liao</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Client and App</h3>
+            <p><strong>Client:</strong> Jimmy Brown</p>
+            <p><strong>Affiliation:</strong> A Real Company Inc</p>
+            <p><strong>Company Address:</strong> 123 Business Way</p>
+            <p><strong>Contact:</strong> contact@arealcompany.com</p>
+            <p><strong>App Name:</strong> Appointment Scheduler</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="purpose">
+        <h2>2. Purpose</h2>
+        <p>
+          Appointment Scheduler is a web application for management staff at A Real Company Inc to organize and manage appointments with outside contacts and internal employees.
+          The app will allow users to securely log in, view appointments in a calendar interface, manage contact information, and create, edit, or delete meetings.
+        </p>
+        <p>
+          We chose this product because the client specifically needs a simple way to manage meetings, quickly access contact details, and view schedules by day.
+          In the initial client report, Jimmy Brown requested support for usernames and passwords, CRUD operations for contacts and events, a calendar view for browsing events, and a sidebar that displays known contacts.
+          Our plan addresses those needs directly by combining scheduling tools, contact management, and a clean interface with default dark mode and an optional light mode.
+        </p>
+      </section>
+
+      <section id="data">
+        <h2>3. Data Description</h2>
+
+        <h3>Table 1: users</h3>
+        <p>We need this table to store the staff accounts that can log in and use the application.</p>
+        <p>This table stores each user's login credentials and basic account details.</p>
+        <table>
+          <tr><th>Field Name</th><th>Data Type</th><th>Notes</th></tr>
+          <tr><td>user_id</td><td>INT AUTO_INCREMENT</td><td>Primary Key</td></tr>
+          <tr><td>username</td><td>VARCHAR(50)</td><td>Unique login name</td></tr>
+          <tr><td>password_hash</td><td>VARCHAR(255)</td><td>Stores hashed password, never plain text</td></tr>
+          <tr><td>full_name</td><td>VARCHAR(100)</td><td>User display name</td></tr>
+          <tr><td>email</td><td>VARCHAR(100)</td><td>Work email</td></tr>
+          <tr><td>created_at</td><td>DATETIME</td><td>Account creation timestamp</td></tr>
+        </table>
+
+        <h3>Table 2: contacts</h3>
+        <p>We need this table so users can store and manage the people they schedule meetings with.</p>
+        <p>This table stores contact details for outside contacts and employees relevant to appointments.</p>
+        <table>
+          <tr><th>Field Name</th><th>Data Type</th><th>Notes</th></tr>
+          <tr><td>contact_id</td><td>INT AUTO_INCREMENT</td><td>Primary Key</td></tr>
+          <tr><td>name</td><td>VARCHAR(100)</td><td>Contact full name</td></tr>
+          <tr><td>company</td><td>VARCHAR(100)</td><td>Organization name if applicable</td></tr>
+          <tr><td>email</td><td>VARCHAR(100)</td><td>Contact email</td></tr>
+          <tr><td>phone</td><td>VARCHAR(20)</td><td>Contact phone number</td></tr>
+          <tr><td>notes</td><td>TEXT</td><td>Optional notes about the contact</td></tr>
+          <tr><td>created_by</td><td>INT</td><td>Foreign key to users.user_id</td></tr>
+        </table>
+
+        <h3>Table 3: events</h3>
+        <p>We need this table to store each appointment shown on the calendar and event views.</p>
+        <p>This table stores meeting dates, times, titles, descriptions, and ownership information.</p>
+        <table>
+          <tr><th>Field Name</th><th>Data Type</th><th>Notes</th></tr>
+          <tr><td>event_id</td><td>INT AUTO_INCREMENT</td><td>Primary Key</td></tr>
+          <tr><td>user_id</td><td>INT</td><td>Foreign key to users.user_id</td></tr>
+          <tr><td>title</td><td>VARCHAR(120)</td><td>Meeting title</td></tr>
+          <tr><td>description</td><td>TEXT</td><td>Optional meeting description</td></tr>
+          <tr><td>location</td><td>VARCHAR(120)</td><td>Meeting location or room</td></tr>
+          <tr><td>start_time</td><td>DATETIME</td><td>Appointment start</td></tr>
+          <tr><td>end_time</td><td>DATETIME</td><td>Appointment end</td></tr>
+          <tr><td>created_at</td><td>DATETIME</td><td>Creation timestamp</td></tr>
+        </table>
+
+        <h3>Table 4: event_contacts</h3>
+        <p>We need this table because one event may involve multiple contacts, and one contact may appear in multiple events.</p>
+        <p>This table stores the relationship between appointments and contacts.</p>
+        <table>
+          <tr><th>Field Name</th><th>Data Type</th><th>Notes</th></tr>
+          <tr><td>event_contact_id</td><td>INT AUTO_INCREMENT</td><td>Primary Key</td></tr>
+          <tr><td>event_id</td><td>INT</td><td>Foreign key to events.event_id</td></tr>
+          <tr><td>contact_id</td><td>INT</td><td>Foreign key to contacts.contact_id</td></tr>
+        </table>
+      </section>
+
+      <section id="functions">
+        <h2>4. Functions Performed by the App</h2>
+        <table>
+          <tr>
+            <th>Function</th>
+            <th>Description</th>
+            <th>Database Effect / Implementation</th>
+          </tr>
+          <tr>
+            <td>User login</td>
+            <td>Allows authorized staff to log into the system securely.</td>
+            <td><strong>SELECT</strong> from users to verify credentials; password checked against hashed value; session created on server.</td>
+          </tr>
+          <tr>
+            <td>View calendar</td>
+            <td>Displays appointments in a calendar/day view.</td>
+            <td><strong>SELECT</strong> from events for the logged-in user; client-side rendering with JavaScript calendar component.</td>
+          </tr>
+          <tr>
+            <td>Create event</td>
+            <td>Lets the user add a new appointment with time, title, and linked contacts.</td>
+            <td><strong>INSERT</strong> into events and <strong>INSERT</strong> into event_contacts for any selected contacts.</td>
+          </tr>
+          <tr>
+            <td>Edit event</td>
+            <td>Lets the user change event details such as title, time, location, or linked contacts.</td>
+            <td><strong>UPDATE</strong> events and possibly <strong>DELETE</strong>/<strong>INSERT</strong> rows in event_contacts to refresh contact links.</td>
+          </tr>
+          <tr>
+            <td>Delete event</td>
+            <td>Removes an appointment that is no longer needed.</td>
+            <td><strong>DELETE</strong> from event_contacts first, then <strong>DELETE</strong> from events.</td>
+          </tr>
+          <tr>
+            <td>View contact list</td>
+            <td>Shows a sidebar or page containing known contacts.</td>
+            <td><strong>SELECT</strong> from contacts; JavaScript updates the sidebar dynamically.</td>
+          </tr>
+          <tr>
+            <td>View contact details</td>
+            <td>Shows full information for a selected contact when the user clicks on them.</td>
+            <td><strong>SELECT</strong> from contacts by contact_id; details displayed in modal or detail panel using JavaScript.</td>
+          </tr>
+          <tr>
+            <td>Create contact</td>
+            <td>Adds a new contact to the system.</td>
+            <td><strong>INSERT</strong> into contacts.</td>
+          </tr>
+          <tr>
+            <td>Edit contact</td>
+            <td>Updates an existing contact's information.</td>
+            <td><strong>UPDATE</strong> contacts.</td>
+          </tr>
+          <tr>
+            <td>Delete contact</td>
+            <td>Removes a contact from the system.</td>
+            <td><strong>DELETE</strong> from event_contacts for that contact, then <strong>DELETE</strong> from contacts.</td>
+          </tr>
+          <tr>
+            <td>Toggle dark/light mode</td>
+            <td>Allows the user to switch between default dark mode and optional light mode.</td>
+            <td>Client-side JavaScript toggles a CSS class on the page and may save preference in localStorage.</td>
+          </tr>
+        </table>
+      </section>
+
+      <section id="roles">
+        <h2>5. Roles of Team Members</h2>
+        <p>
+          We divided the project into vertical end-to-end features so that each team member is responsible for the HTML, CSS, JavaScript, PHP, and database work for one major piece of functionality.
+          This should create a more even division of labour and make integration easier.
+        </p>
+        <div class="grid-2">
+          <div class="card">
+            <h3>Lucas Joel — Authentication and User Accounts</h3>
+            <ul>
+              <li>Build login page and form validation</li>
+              <li>Implement session handling</li>
+              <li>Connect login form to users table</li>
+              <li>Protect pages so only logged-in users can access them</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Aaron Sit — Contact Management</h3>
+            <ul>
+              <li>Build contacts page and sidebar contact list</li>
+              <li>Implement create, read, update, and delete contact features</li>
+              <li>Implement click-to-view contact details</li>
+              <li>Connect frontend forms to contacts table</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Jack Yuan — Event and Calendar Management</h3>
+            <ul>
+              <li>Build calendar/day view interface</li>
+              <li>Implement create, read, update, and delete event features</li>
+              <li>Display events by date and time</li>
+              <li>Connect event features to events and event_contacts tables</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Harshith Chiduruppa — UI Integration and Theme / Dashboard</h3>
+            <ul>
+              <li>Build dashboard layout and navigation</li>
+              <li>Implement dark mode default and light mode toggle</li>
+              <li>Ensure visual consistency across all pages</li>
+              <li>Assist with end-to-end integration and testing</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Jim Liao — Notifications, Validation, and QA</h3>
+            <ul>
+              <li>Implement form validation for contacts and events (client + server side)</li>
+              <li>Handle user feedback messages (success/error alerts)</li>
+              <li>Implement optional reminders or notifications for upcoming events</li>
+              <li>Perform testing across all features and fix bugs</li>
+              <li>Ensure data integrity (e.g., no overlapping events, required fields filled)</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="wireframes">
+        <h2>6. Wireframes</h2>
+        <p class="note">These are basic layout sketches and can be replaced later with polished mockups.</p>
+        <h3><a href="login-wireframe.html">Login Page</a></h3>
+        <h3><a href="dashboard-wireframe.html">Dashboard / Calendar View</a></h3>
+        <h3><a href="contacts-wireframe.html">Contact Management Page</a></h3>
+        <h3><a href="event-form-wireframe.html">Create / Edit Event Page</a></h3>
+      </section>
+
+      <section id="increments">
+        <h2>7. The Increments</h2>
+        <table>
+          <tr>
+            <th>Increment</th>
+            <th>Target Date</th>
+            <th>Planned Functionality</th>
+          </tr>
+          <tr>
+            <td>First Increment</td>
+            <td>April 7, 2026</td>
+            <td>
+              <ul>
+                <li>Basic login page and session-based authentication</li>
+                <li>Contact list page with ability to add and view contacts</li>
+                <li>Basic calendar page that displays stored events</li>
+                <li>Shared dashboard layout with dark mode styling and light mode toggle</li>
+                <li>Form validation for login and contact creation</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td>Final Delivery</td>
+            <td>April 19, 2026</td>
+            <td>
+              <ul>
+                <li>Testing, bug fixing, and integration</li>
+                <li>Responsive design improvements</li>
+                <li>Final visual polish and client-ready deployment</li>
+              </ul>
+            </td>
+          </tr>
+        </table>
+      </section>
+
+      <section id="feedback">
+        <h2>8. Client Feedback</h2>
+        <p>When we presented our idea, the client emphasized several important features and design preferences.</p>
+
+        <div class="quote">
+          “Client want a default dark mode with light mode option.”
+        </div>
+        <p>
+          Based on this feedback, we made dark mode the default visual style and added a client-side light mode toggle.
+        </p>
+
+        <div class="quote">
+          “Should have sidebar with known contacts to see quickly who they have a meeting with.”
+        </div>
+        <p>
+          Based on this suggestion, we added a sidebar contact list to the dashboard and made contact visibility a core part of the layout.
+        </p>
+
+        <div class="quote">
+          “Should have a calendar view to be able to see meetings on days.”
+        </div>
+        <p>
+          In response, we made the calendar/day view one of the main features of the application rather than just a secondary page.
+        </p>
+
+        <div class="quote">
+          “Should be able to CRUD contacts and events with contacts.”
+        </div>
+        <p>
+          This led us to include full create, read, update, and delete functionality for both contacts and events, along with a linking table between them.
+        </p>
+
+        <p>
+          Overall, the client's feedback confirmed that our initial idea was on the right track, but it also helped us refine the plan by making the contact sidebar, calendar view, and dark mode requirements more central to the application design.
+        </p>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

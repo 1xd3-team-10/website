@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacts Wireframe</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+    }
+    .page {
+      border: 2px solid #000;
+      background: #fff;
+      padding: 16px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .header, .add-btn {
+      border: 2px solid #000;
+      padding: 12px;
+      margin-bottom: 16px;
+    }
+    .table {
+      border: 2px solid #000;
+    }
+    .row {
+      display: grid;
+      grid-template-columns: 2fr 3fr 2fr 2fr;
+    }
+    .cell {
+      border-right: 2px solid #000;
+      border-bottom: 2px solid #000;
+      padding: 12px;
+      min-height: 50px;
+    }
+    .row .cell:last-child {
+      border-right: none;
+    }
+    .row:last-child .cell {
+      border-bottom: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="header">Contacts</div>
+    <div class="add-btn">Add Contact</div>
+
+    <div class="table">
+      <div class="row">
+        <div class="cell">Name</div>
+        <div class="cell">Email</div>
+        <div class="cell">Phone</div>
+        <div class="cell">Actions</div>
+      </div>
+      <div class="row">
+        <div class="cell">John Doe</div>
+        <div class="cell">john@email.com</div>
+        <div class="cell">555-1234</div>
+        <div class="cell">Edit Delete</div>
+      </div>
+      <div class="row">
+        <div class="cell">Jane Smith</div>
+        <div class="cell">jane@email.com</div>
+        <div class="cell">555-5678</div>
+        <div class="cell">Edit Delete</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

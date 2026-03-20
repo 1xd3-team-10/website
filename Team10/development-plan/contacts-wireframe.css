@@ -1,0 +1,38 @@
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  padding: 20px;
+}
+.page {
+  border: 2px solid #000;
+  background: #fff;
+  padding: 16px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+header, .add-btn {
+  border: 2px solid #000;
+  padding: 12px;
+  margin-bottom: 16px;
+}
+.table {
+  border: 2px solid #000;
+}
+.row {
+  display: grid;
+  grid-template-columns: 2fr 3fr 2fr 2fr;
+}
+.cell {
+  border-right: 2px solid #000;
+  border-bottom: 2px solid #000;
+  padding: 12px;
+  min-height: 50px;
+}
+.row .cell:last-child {
+  border-right: none;
+}
+.row:last-child .cell {
+  border-bottom: none;
+}

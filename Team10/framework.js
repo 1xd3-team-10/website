@@ -1,6 +1,9 @@
 const debug = true;
 
 const componentCache = new Map();
+const deferredFunctions = [];
+/** @type {Array<[string, () => void, Array<() => Element | Element>]>} */
+const updateEvents = [];
 
 /**
  * @returns base url of the application
@@ -105,10 +108,8 @@ const ReplaceComponents = async (components) => {
             }
             document.head.appendChild(newScript);
         });
-
-        element.replaceWith(fragment);
-
         await ApplyComponentFillToNode(fragment);
+        element.replaceWith(fragment);
     }
 };
 
@@ -154,4 +155,173 @@ const errorMessage = (message) => {
     console.error(message);
 };
 
-ApplyComponentFill("root");
+// EXPOSED FUNCTIONS
+
+/**
+ *
+ * @param {Function} func function to defer run until after load
+ */
+const DeferRun = (func) => {
+    deferredFunctions.push(func);
+};
+
+/**
+ * Registers an event listener to be bound after component load
+ * @param {string} type DOM event type
+ * @param {Function} func handler function
+ * @param {Element[]} elements elements to attach the listener to
+ */
+const registerEvent = (type, func, elements) => {
+    updateEvents.push([type, func, elements]);
+};
+
+/**
+ * Run function on input event to elements
+ * @param {Function} func function to be run
+ * @param {Element[]} elements elements to listen for input
+ */
+const OnInput = (func, elements) => {
+    registerEvent("input", func, elements);
+};
+
+/**
+ * Run function on change event to elements
+ * @param {Function} func function to be run
+ * @param {Element[]} elements elements to listen for change
+ */
+const OnChange = (func, elements) => {
+    registerEvent("change", func, elements);
+};
+
+/**
+ * Run function on submit event to elements
+ * @param {Function} func function to be run
+ * @param {Element[]} elements elements to listen for submit
+ */
+const OnSubmit = (func, elements) => {
+    registerEvent("submit", func, elements);
+};
+
+/**
+ * Run function on click event to elements
+ * @param {Function} func function to be run
+ * @param {Element[]} elements elements to listen for click
+ */
+const OnClick = (func, elements) => {
+    registerEvent("click", func, elements);
+};
+
+/**
+ * Run function on double click event to elements
+ * @param {Function} func function to be run
+ * @param {Element[]} elements elements to listen for double click
+ */
+const OnDblClick = (func, elements) => {
+    registerEvent("dblclick", func, elements);
+};
+
+/**
+ * Run function on mouse enter event to elements
+ * @param {Function} func function to be run
+ * @param {Element[]} elements elements to listen for mouse enter
+ */
+const OnMouseEnter = (func, elements) => {
+    registerEvent("mouseenter", func, elements);
+};
+
+/**
+ * Run function on mouse leave event to elements
+ * @param {Function} func function to be run
+ * @param {Element[]} elements elements to listen for mouse leave
+ */
+const OnMouseLeave = (func, elements) => {
+    registerEvent("mouseleave", func, elements);
+};
+
+/**
+ * Run function on keydown event to elements
+ * @param {Function} func function to be run
+ * @param {Element[]} elements elements to listen for keydown
+ */
+const OnKeyDown = (func, elements) => {
+    registerEvent("keydown", func, elements);
+};
+
+/**
+ * Run function on keyup event to elements
+ * @param {Function} func function to be run
+ * @param {Element[]} elements elements to listen for keyup
+ */
+const OnKeyUp = (func, elements) => {
+    registerEvent("keyup", func, elements);
+};
+
+/**
+ * Run function on focus event to elements
+ * @param {Function} func function to be run
+ * @param {Element[]} elements elements to listen for focus
+ */
+const OnFocus = (func, elements) => {
+    registerEvent("focus", func, elements);
+};
+
+/**
+ * Run function on blur event to elements
+ * @param {Function} func function to be run
+ * @param {Element[]} elements elements to listen for blur
+ */
+const OnBlur = (func, elements) => {
+    registerEvent("blur", func, elements);
+};
+
+/**
+ * Run function on load event
+ * @param {Function} func function to be run
+ * @param {Element[]} elements elements to listen for load
+ */
+const OnLoad = (func, elements) => {
+    registerEvent("load", func, elements);
+};
+
+/**
+ * Run function on resize event
+ * @param {Function} func function to be run
+ * @param {Element[]} elements elements to listen for resize
+ */
+const OnResize = (func, elements) => {
+    registerEvent("resize", func, elements);
+};
+
+const GetElem = (query, resolve = false) => {
+    if (resolve) {
+        return document.querySelector(query);
+    }
+    return () => document.querySelector(query);
+};
+
+const GetElems = (query, resolve) => {
+    if (resolve) {
+        return document.querySelectorAll(query);
+    }
+    return () => document.querySelectorAll(query);
+};
+
+const resolveElement = (value) => {
+    while (typeof value === "function") {
+        value = value();
+    }
+    return value instanceof Element ? value : null;
+};
+
+ApplyComponentFill("root").then(() => {
+    deferredFunctions.forEach((func) => {
+        func();
+    });
+
+    updateEvents.forEach(([type, func, elements]) => {
+        console.log();
+        elements.forEach((elem) => {
+            resolveElement(elem).addEventListener(type, func);
+        });
+    });
+});

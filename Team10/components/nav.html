@@ -1,10 +1,25 @@
 <header>
-    Team 10
-    <links>
+    <h1 class="ml-4">Team 10</h1>
+    <nav id="nav-header" class="mr-4">
         <a class="links" href="/Team10/">Home</a>
         <a class="links" href="/Team10/about/">About Us</a>
         <a class="links" href="/Team10/project/">The Project</a>
         <a class="links" href="/Team10/showcase/">Showcase</a>
         <a class="links" href="/Team10/contact">Contact Us</a>
-    </link>
+    </nav>
 </header>
+
+<script>
+    DeferRun(() => {
+        const element = document.getElementById("nav-header");
+        if (element.id === "nav-header") {
+            for (const node of element.children) {
+                const linkURL = new URL(node.href);
+                if (linkURL.pathname === window.location.pathname) {
+                    node.classList.add("nav-selected");
+                    console.log(node.classList);
+                }
+            }
+        }
+    });
+</script>

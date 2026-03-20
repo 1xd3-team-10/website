@@ -1,0 +1,14 @@
+<div>
+    <button id="thisIsAButton">Hello World</button>
+    <input type="text" id="test" />
+</div>
+<script>
+    OnInput(() => {
+        console.log("Hello World");
+    }, [GetElem("#test")]);
+
+    OnClick(() => {
+        const input = GetElem("#test", true);
+        input.value = "HELLO WORLD";
+    }, [GetElem("#thisIsAButton")]);
+</script>

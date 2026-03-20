@@ -61,7 +61,7 @@ body {
     margin: 0;
 }
 
-links {
+nav {
     display: flex;
     flex-direction: row;
     gap: var(--space-4);
@@ -69,11 +69,17 @@ links {
     align-items: center;
 }
 
+.nav-selected {
+    background-color: var(--color-bg);
+    border-radius: var(--radius-lg);
+}
+
 header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: var(--space-4);
+    align-items: center;
+    height: 108px;
     font-size: var(--text-2xl);
     font-weight: var(--font-weight-bold);
     background-color: var(--color-surface);

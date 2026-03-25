@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +9,13 @@
 	<title>Document</title>
 </head>
 <body>
-    Hello <?php echo $_POST["fullName"]; ?>
+	<?php 
+		if(isset($_SESSION["username"])) {
+			$username = $_SESSION["username"];
+			echo "Logged in as " . $username;
+		} else {
+			echo "not logged in";
+		}
+	?>
 </body>
 </html>

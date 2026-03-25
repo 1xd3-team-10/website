@@ -1,9 +1,6 @@
 <?php
-    error_reporting(E_ALL);
-    ini_set('display_errors', 1);
-
     require_once __DIR__ . "/../connect.php";
-
+    
     function handleRegistration($username, $email, $fullName, $password, $confirmPassword): string {
         if (strlen($username) > 64) return "username must be under 64 characters";
         elseif (strlen($username) < 8) return "username must be at least 8 characters";

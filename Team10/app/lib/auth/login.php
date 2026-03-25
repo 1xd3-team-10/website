@@ -38,7 +38,7 @@
         $conn->close();
 
         $_SESSION["username"] = $user["username"];
-        $_SESSION["fullName"] = $user["fullName"];
+        $_SESSION["fullName"] = $user["full_name"];
         $_SESSION["email"] = $user["email"];
 
         return "ok";

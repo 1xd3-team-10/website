@@ -1,6 +1,3 @@
-<?php 
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,9 +7,10 @@ session_start();
 </head>
 <body>
 	<?php 
-		if(isset($_SESSION["username"])) {
-			$username = $_SESSION["username"];
-			echo "Logged in as " . $username;
+		require_once __DIR__ . "/./lib/auth/auth.php";
+
+		if(isLoggedIn()) {
+			echo "Welcome " . getFullName();
 		} else {
 			echo "not logged in";
 		}

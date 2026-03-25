@@ -17,7 +17,7 @@
         if ($res->num_rows === 0) {
             $stmt->close();
             $conn->close();
-            return "user does not exist1";
+            return "user does not exist";
         }
 
         if ($res->num_rows > 1) {
@@ -31,7 +31,7 @@
         if (!password_verify($password, $user["password_hash"], )) {
             $stmt->close();
             $conn->close();
-            return "user does not exist2";
+            return "user does not exist";
         }
 
         $stmt->close();

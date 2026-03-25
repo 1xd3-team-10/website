@@ -23,17 +23,17 @@
     ?>
     <div class="container centerHorizontalItems centerVerticalItems">
         <form action="/Team10/app/register/index.php" method="post" id="registrationForm" class="authCard">
-            <label for="username">Username</label>
-            <input name="username" id="username" type="text">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" type="text">
-            <label for="fullName">Full Name</label>
-            <input type="text" name="fullName" id="fullName">
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password">
-            <label for="confirmPassword">Confirm Password</label>
-            <input type="password" name="confirmPassword" id="confirmPassword">
-            <input type="submit" name="submit" id="submit" value="Register">
+            <label class="auth_input_label" for="username">Username</label>
+            <input class="auth_input" name="username" id="username" type="text">
+            <label class="auth_input_label" for="email">Email</label>
+            <input class="auth_input" type="email" id="email" name="email" type="text">
+            <label class="auth_input_label" for="fullName">Full Name</label>
+            <input class="auth_input" type="text" name="fullName" id="fullName">
+            <label class="auth_input_label" for="password">Password</label>
+            <input class="auth_input" type="password" name="password" id="password">
+            <label class="auth_input_label" for="confirmPassword">Confirm Password</label>
+            <input class="auth_input" type="password" name="confirmPassword" id="confirmPassword">
+            <input class="auth_input" type="submit" name="submit" id="submit" value="Register">
         </form>
     </div>
 </body>

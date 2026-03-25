@@ -40,6 +40,6 @@
         $_SESSION["username"] = $user["username"];
         $_SESSION["fullName"] = $user["full_name"];
         $_SESSION["email"] = $user["email"];
-
+        $_SESSION["user_id"] = $user["user_id"];
         return "ok";
     }

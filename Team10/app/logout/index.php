@@ -11,7 +11,7 @@ session_start();
 <body>
     <?php
     session_destroy();
-    header("Location: /Team10/app", true, 301);
+    header("Location: /Team10/app/index.php", true, 301);
     exit();
     ?>
 </body>

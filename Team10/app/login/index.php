@@ -17,7 +17,7 @@
         if ($login !== "ok") {
             echo "<div onclick=\"this.style.display = 'none'\" class='auth_error'>" . $login . "</div>";
         } else {
-			header("Location: /Team10/app", true, 301);
+			header("Location: /Team10/app/index.php", true, 301);
 			exit();
 		}
     }

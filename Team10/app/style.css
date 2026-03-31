@@ -10,7 +10,7 @@
 .container {
     display: flex;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
     padding: 0;
     flex-direction: row;
@@ -63,4 +63,191 @@
 
 input[type="submit"].auth_input:hover {
     background-color: var(--color-surface);
+}
+
+.appShell {
+    width: 100%;
+    padding: var(--space-4);
+    color: var(--color-text);
+}
+
+.appHeader {
+    margin-bottom: var(--space-4);
+    border-radius: var(--radius-md);
+}
+
+.appGrid {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    gap: var(--space-4);
+    align-items: start;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.auth_input,
+.appTextarea {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.appTextarea {
+    min-height: 110px;
+    resize: vertical;
+    font-family: var(--font-sans);
+}
+
+.appSubmit {
+    width: 100%;
+    cursor: pointer;
+    transition: background-color var(--motion-fast), transform var(--motion-fast);
+}
+
+.eventList {
+    margin: 0;
+}
+
+.eventCard {
+    border: 2px solid var(--color-surface);
+}
+
+.eventActions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-top: var(--space-3);
+    justify-content: center;
+}
+
+.eventActions form {
+    margin: 0;
+}
+
+.backLink {
+    margin-top: var(--space-3);
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+.btn,
+.btn:link,
+.btn:visited,
+input[type="submit"].btn,
+button.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    min-height: 42px;
+    padding: var(--space-2) var(--space-3);
+    border: none;
+    border-radius: var(--radius-md);
+    background-color: var(--color-primary);
+    color: var(--color-text);
+    text-decoration: none;
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    transition: background-color var(--motion-fast), transform var(--motion-fast);
+}
+
+.btn:hover,
+button.btn:hover {
+    background-color: var(--color-primary-bold);
+    text-decoration: none;
+}
+
+.appSubmit.btn {
+    width: 100%;
+}
+
+.eventActions .btn {
+    width: auto;
+    margin: 0;
+}
+
+.eventActions form {
+    display: block;
+    margin: 0;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-3);
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: var(--space-2);
+}
+
+.calendar-cell {
+    min-height: 100px;
+    padding: var(--space-2);
+    border: 2px solid var(--color-surface);
+    border-radius: var(--radius-md);
+    background-color: var(--color-card-surface);
+}
+
+.calendar-day {
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--space-2);
+}
+
+.calendar-event {
+    margin-top: 4px;
+    padding: 4px 6px;
+    border-radius: var(--radius-sm);
+    background-color: var(--color-primary);
+    color: var(--color-text);
+    font-size: var(--text-sm);
+}
+
+.calendarSection {
+    margin-bottom: var(--space-4);
+}
+
+.calendarTopBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-3);
+}
+
+.inputRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+#calendarWrapper.isHidden {
+    display: none;
+}
+
+@media (max-width: 1200px) {
+    .appGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .calendarSection {
+        grid-row: 1;
+    }
 }

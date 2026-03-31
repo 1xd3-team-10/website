@@ -1,5 +1,8 @@
-(function () {
+window.addEventListener("load", () => {
     const calendarEl = document.getElementById("calendar");
+    const startTimeEl = document.getElementById("start_time");
+    const endTimeEl = document.getElementById("end_time");
+
     if (!calendarEl) return;
 
     let currentDate = new Date();
@@ -63,7 +66,7 @@
         const end = endOfMonth(currentDate);
 
         const eventsByDay = groupEventsByDay(window.EVENTS || []);
-
+        console.log(eventsByDay)
         const firstDay = start.getDay();
         for (let i = 0; i < firstDay; i++) {
             grid.appendChild(document.createElement("div"));
@@ -87,9 +90,21 @@
                     const ev = document.createElement("div");
                     ev.className = "calendar-event";
                     ev.textContent = event.title;
+
+                    ev.addEventListener("click", () => {
+                        window.location.href = `/Team10/app/events/edit.php?id=${eventsByDay[key][0].event_id}`
+                    })
                     cell.appendChild(ev);
                 });
             }
+
+            cell.addEventListener("click", (e) => {
+                const tempTime = new Date()
+                tempTime.setTime(date.getTime()) 
+                startTimeEl.value = tempTime.toISOString().slice(0, 16);
+                tempTime.setTime(date.getTime() + 3600000)
+                endTimeEl.value = tempTime.toISOString().slice(0, 16);
+            })
 
             grid.appendChild(cell);
         }
@@ -99,4 +114,4 @@
     }
 
     render();
-})();
+});

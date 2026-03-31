@@ -77,13 +77,16 @@ $endValue = date("Y-m-d\TH:i", strtotime($event["end_time"]));
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Event</title>
     <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="../style.css">
+    <script src="../assets/js/eventMod.js"></script>
 </head>
+
 <body>
     <div class="container centerHorizontalItems centerVerticalItems">
         <div class="authCard appShell">
@@ -95,21 +98,28 @@ $endValue = date("Y-m-d\TH:i", strtotime($event["end_time"]));
                     <input type="hidden" name="event_id" value="<?= htmlspecialchars($event["event_id"]) ?>">
 
                     <label class="auth_input_label" for="title">Title</label>
-                    <input class="auth_input" type="text" id="title" name="title" value="<?= htmlspecialchars($event["title"]) ?>" required>
+                    <input class="auth_input" type="text" id="title" name="title"
+                        value="<?= htmlspecialchars($event["title"]) ?>" required>
 
                     <label class="auth_input_label" for="description">Description</label>
-                    <textarea class="auth_input appTextarea" id="description" name="description"><?= htmlspecialchars($event["description"]) ?></textarea>
+                    <textarea class="auth_input appTextarea" id="description"
+                        name="description"><?= htmlspecialchars($event["description"]) ?></textarea>
 
                     <label class="auth_input_label" for="location">Location</label>
-                    <input class="auth_input" type="text" id="location" name="location" value="<?= htmlspecialchars($event["location"]) ?>">
+                    <input class="auth_input" type="text" id="location" name="location"
+                        value="<?= htmlspecialchars($event["location"]) ?>">
 
                     <label class="auth_input_label" for="start_time">Start Time</label>
-                    <input class="auth_input" type="datetime-local" id="start_time" name="start_time" value="<?= htmlspecialchars($startValue) ?>" required>
+                    <input class="auth_input" type="datetime-local" id="start_time" name="start_time"
+                        value="<?= htmlspecialchars($startValue) ?>" required>
 
                     <label class="auth_input_label" for="end_time">End Time</label>
-                    <input class="auth_input" type="datetime-local" id="end_time" name="end_time" value="<?= htmlspecialchars($endValue) ?>" required>
-
-                    <input class="appSubmit btn" type="submit" value="Save Changes">
+                    <input class="auth_input" type="datetime-local" id="end_time" name="end_time"
+                        value="<?= htmlspecialchars($endValue) ?>" required>
+                    <div class="inputRow">
+                        <button class="appSubmit btn" type="button" onclick="deleteConfirmation(this, <?= (int) $event['event_id'] ?>)" class="btn">Delete</button>
+                        <input class="appSubmit btn" type="submit" value="Save Changes">
+                    </div>
                 </form>
 
                 <p class="backLink"><a href="../index.php">Back to dashboard</a></p>
@@ -117,4 +127,5 @@ $endValue = date("Y-m-d\TH:i", strtotime($event["end_time"]));
         </div>
     </div>
 </body>
+
 </html>

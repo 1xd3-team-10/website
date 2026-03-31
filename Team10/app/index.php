@@ -47,6 +47,8 @@ $conn->close();
     <title>Appointment Scheduler</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="style.css">
+    <script src="assets/js/calendar.js"></script>
+    <script src="assets/js/eventMod.js"></script>
 </head>
 <body>
     <div class="container centerHorizontalItems">
@@ -60,20 +62,7 @@ $conn->close();
                 <links>
                     <a href="./logout/index.php">Log Out</a>
                 </links>
-            </header>
-
-            <div class="calendarSection">
-                <card>
-                    <div class="calendarTopBar">
-                        <h2>Calendar</h2>
-                        <button type="button" class="btn" id="toggleCalendarBtn">Show Calendar</button>
-                    </div>
-
-                    <div id="calendarWrapper" class="isHidden">
-                        <div id="calendar"></div>
-                    </div>
-                </card>
-            </div>
+			</header>
 
             <div class="appGrid">
                 <card>
@@ -98,7 +87,17 @@ $conn->close();
                         <input class="auth_input appSubmit btn" type="submit" value="Create Event">
                     </form>
                 </card>
+				<div class="calendarSection">
+					<card>
+						<div class="calendarTopBar">
+							<h2>Calendar</h2>
+						</div>
 
+						<div id="calendarWrapper">
+							<div id="calendar"></div>
+						</div>
+					</card>
+				</div>
                 <card>
                     <h2>Upcoming Events</h2>
                     <?php if (count($events) === 0): ?>
@@ -120,11 +119,7 @@ $conn->close();
 
                                     <div class="eventActions">
                                         <a class="btn" href="events/edit.php?id=<?= urlencode($event["event_id"]) ?>">Edit</a>
-
-                                        <form action="events/delete.php" method="post">
-                                            <input type="hidden" name="event_id" value="<?= (int)$event["event_id"] ?>">
-                                            <input class="btn" type="submit" value="Delete">
-                                        </form>
+                                        <button onclick="deleteConfirmation(this, <?= (int)$event['event_id'] ?>)" class="btn">Delete</button>
                                     </div>
                                 </card>
                             <?php endforeach; ?>
@@ -137,7 +132,6 @@ $conn->close();
     <script>
         window.EVENTS = <?= json_encode($events, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
     </script>
-    <script src="assets/js/calendar.js"></script>
     <script>
         const toggleCalendarBtn = document.getElementById("toggleCalendarBtn");
         const calendarWrapper = document.getElementById("calendarWrapper");

@@ -9,6 +9,24 @@ window.addEventListener(("load"), () => {
         contact.addEventListener("click", () => {
             messageInput.disabled = false
             recipient = contact.innerHTML;
+            fetch("../events/getMessages.php", {
+                method: "POST",
+                credentials: "include",
+                body: JSON.stringify({
+                    recipient: recipient
+                })
+            }).then((res) => {
+                if (res.ok) {
+                    return res.json()
+                }
+            }).then((data) => {
+                const recipientID = data.recipientID;
+                chatWindow.innerHTML = ""
+                data.messages.forEach((msg) => {
+                    const chatMsg = createMessage(msg.content, msg.sender_id !== data.recipientID)
+                    chatWindow.append(chatMsg)
+                })
+            })
         })
     })
 

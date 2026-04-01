@@ -69,7 +69,6 @@ input[type="submit"].auth_input:hover {
     width: 100%;
     padding: var(--space-4);
     color: var(--color-text);
-    height: calc(100vh - var(--space-4));
 }
 
 .appHeader {
@@ -80,6 +79,13 @@ input[type="submit"].auth_input:hover {
 .appGrid {
     display: grid;
     grid-template-columns: 1fr 3fr 1fr;
+    gap: var(--space-4);
+    align-items: start;
+}
+
+.socialGrid {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
     gap: var(--space-4);
     align-items: start;
 }
@@ -245,6 +251,7 @@ button.btn:hover {
 
 .contacts {
     max-height: 95vh;
+    min-height: 75vh;
 }
 
 .contact_list {
@@ -253,12 +260,44 @@ button.btn:hover {
     overflow-y: scroll;
 }
 
+.chat_window {
+    min-height: 75vh;
+    max-height: 75vh;
+}
+
+.chat {
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    max-height: auto;
+}
+
+.mt-16 {
+    margin-top: 16px;
+}
+
+.userMessage {
+    margin-top: 12px;
+    padding: 8px;
+    border-radius: 12px;
+    margin-left: auto;
+    background-color: var(--color-primary);
+}
+
+.recipientMessage {
+    margin-right: auto;
+    background-color: var(--color-surface);
+}
+
 #calendarWrapper.isHidden {
     display: none;
 }
 
 @media (max-width: 1200px) {
     .appGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .socialGrid {
         grid-template-columns: 1fr;
     }
 

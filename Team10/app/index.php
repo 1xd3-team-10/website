@@ -9,11 +9,6 @@ if (!isLoggedIn()) {
 
 $userId = getUserId();
 
-if ($userId === null) {
-    header("Location: ./logout/index.php");
-    exit;
-}
-
 $conn = connect();
 
 $sql = "

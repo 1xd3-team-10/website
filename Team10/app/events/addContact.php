@@ -54,6 +54,16 @@ if (!is_array($contacts)) {
 
 $wantedContact = $res->fetch_assoc()["user_id"];
 
+if ($wantedContact == $userId) {
+    header("Location: ../social/index.php?error=Cannot%20add%20yourself%20as%20a%20contact");
+    exit;
+}
+
+if (in_array($wantedContact, $contacts)) {
+    header("Location: ../social/index.php?error=User%20is%20already%20a%20contact");
+    exit;
+}
+
 array_push($contacts, $wantedContact);
 $newContacts = json_encode($contacts);
 

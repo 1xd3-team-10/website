@@ -69,6 +69,7 @@ input[type="submit"].auth_input:hover {
     width: 100%;
     padding: var(--space-4);
     color: var(--color-text);
+    height: calc(100vh - var(--space-4));
 }
 
 .appHeader {
@@ -240,6 +241,16 @@ button.btn:hover {
 
 .submit {
     height: 25px;
+}
+
+.contacts {
+    max-height: 95vh;
+}
+
+.contact_list {
+    font-size: 24px;
+    height: 60vh;
+    overflow-y: scroll;
 }
 
 #calendarWrapper.isHidden {

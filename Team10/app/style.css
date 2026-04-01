@@ -238,6 +238,10 @@ button.btn:hover {
     gap: 12px;
 }
 
+.submit {
+    height: 25px;
+}
+
 #calendarWrapper.isHidden {
     display: none;
 }

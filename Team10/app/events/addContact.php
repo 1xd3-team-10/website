@@ -71,4 +71,8 @@ $stmt = $conn->prepare("UPDATE users SET contacts=? WHERE user_id = ?;");
 $stmt->bind_param("si", $newContacts, $userId);
 $stmt->execute();
 
+$stmt->close();
+$conn->close();
+
 header("Location: ../social/index.php");
+exit;

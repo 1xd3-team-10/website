@@ -17,10 +17,11 @@
 
         $hashed_password = password_hash($password, PASSWORD_BCRYPT);
 
-        $sql = "INSERT INTO users (username, password_hash, full_name, email) VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO users (username, password_hash, full_name, email, contacts) VALUES (?, ?, ?, ?, ?)";
 
         if ($stmt = $conn->prepare($sql)) {
-            $stmt->bind_param("ssss", $username, $hashed_password, $fullName, $email);
+            $contactsTemp = "[]";
+            $stmt->bind_param("sssss", $username, $hashed_password, $fullName, $email, $contactsTemp);
             $stmt->execute();
         }
         $stmt->close();

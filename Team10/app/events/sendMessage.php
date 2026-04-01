@@ -61,6 +61,22 @@ if (!$stmt->execute()) {
     exit;
 }
 
+$sql = "INSERT INTO updates (user_id, content) VALUES (?, ?);";
+$stmt = $conn->prepare($sql);
+
+$jsonContent = json_encode([
+    "type" => "message",
+    "data" => [
+        "conversation_id" => $convID,
+        "sender_id" => $senderID,
+        "content" => $msg,
+        "created_at" => date("Y-m-d H:i:s"),
+    ]
+]);
+
+$stmt->bind_param("is", $recipientID, $jsonContent);
+$stmt->execute();
+
 http_response_code(201);
 echo json_encode([
     "success" => true,

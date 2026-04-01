@@ -59,4 +59,9 @@ $res = $stmt->get_result();
 $messages = $res->fetch_all(MYSQLI_ASSOC);
 $messages = array_reverse($messages);
 
+$sql = "DELETE FROM updates WHERE user_id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $userId);
+$stmt->execute();
+
 echo json_encode(["messages" => $messages, "recipientID" => $recipientID]);

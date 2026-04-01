@@ -4,6 +4,8 @@ window.addEventListener(("load"), () => {
     const messageInput = document.querySelector("#send_message_input");
     const chatWindow = document.querySelector("#chatWindow");
     let recipient = "";
+    let recipient_id = -1;
+    let seenUpdates = [];
 
     contacts.forEach((contact) => {
         contact.addEventListener("click", () => {
@@ -24,6 +26,7 @@ window.addEventListener(("load"), () => {
                 chatWindow.innerHTML = ""
                 data.messages.forEach((msg) => {
                     const chatMsg = createMessage(msg.content, msg.sender_id !== data.recipientID)
+                    recipient_id = data.recipientID
                     chatWindow.append(chatMsg)
                 })
             })
@@ -79,4 +82,26 @@ window.addEventListener(("load"), () => {
     const scrollToBottom = () => {
         chatWindow.scrollTop = chatWindow.scrollHeight;
     };
+
+    setInterval(() => {
+        fetch("../events/getUpdates.php", {
+            method: "POST",
+            credentials: "include",
+            body: JSON.stringify({
+                seenUpdates: seenUpdates
+            })
+        }).then(res => res.ok ? res.json() : [])
+        .then(data => {
+            data.updates.forEach(update => {
+                seenUpdates.push(update.update_id);
+                const updateData = JSON.parse(update.content);
+                const updateDataData = updateData.data; // ✅ no extra parse
+                if (updateData.type === "message" && updateDataData.sender_id === recipient_id) {
+                    const chatMsg = createMessage(updateDataData.content, false);
+                    chatWindow.append(chatMsg); // ✅ append instead of push
+                    scrollToBottom();
+                }
+            });
+        });
+    }, 500);
 })

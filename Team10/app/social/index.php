@@ -18,6 +18,12 @@ if (!isLoggedIn()) {
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
+    <?php 
+        $err = $_GET["error"];
+        if ($err != "") {
+            echo "<div onclick=\"this.style.display = 'none'\" class='auth_error'>" . $err . "</div>";
+        }
+    ?>
     <div class="container centerHorizontalItems">
         <div class="authCard appShell">
             <header class="appHeader">

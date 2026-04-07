@@ -29,6 +29,7 @@
             <label class="auth_input_label" for="password">Password</label>
             <input placeholder="password..." class="auth_input" type="password" name="password" id="password">
             <input class="auth_input" type="submit" name="submit" id="submit" value="Login">
+            <a href="../register/index.php">Register</a>
         </form>
     </div>
 </body>

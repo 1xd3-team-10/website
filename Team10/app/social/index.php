@@ -38,6 +38,7 @@ if (!isLoggedIn()) {
                 </div>
 
                 <links>
+                    <a href="../index.php">Home</a>
                     <a href="../logout/index.php">Log Out</a>
                 </links>
             </header>

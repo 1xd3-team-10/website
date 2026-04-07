@@ -55,6 +55,7 @@ $conn->close();
                 </div>
 
                 <links>
+                    <a href="./social/index.php">Social</a>
                     <a href="./logout/index.php">Log Out</a>
                 </links>
 			</header>

@@ -22,7 +22,6 @@ window.addEventListener(("load"), () => {
                     return res.json()
                 }
             }).then((data) => {
-                const recipientID = data.recipientID;
                 chatWindow.innerHTML = ""
                 data.messages.forEach((msg) => {
                     const chatMsg = createMessage(msg.content, msg.sender_id !== data.recipientID)
@@ -105,3 +104,8 @@ window.addEventListener(("load"), () => {
         });
     }, 500);
 })
+
+
+const myFunc = async () => {
+    return 1
+}

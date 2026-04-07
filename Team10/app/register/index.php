@@ -34,6 +34,7 @@
             <label class="auth_input_label" for="confirmPassword">Confirm Password</label>
             <input class="auth_input" type="password" name="confirmPassword" id="confirmPassword">
             <input class="auth_input" type="submit" name="submit" id="submit" value="Register">
+            <a href="../login/index.php">Login</a>
         </form>
     </div>
 </body>
